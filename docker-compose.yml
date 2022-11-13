@@ -1,6 +1,7 @@
 version: '3'
 services:
   dj-app:
+    image: sakr1999/travel-app
     container_name: secand
     build: .
 
