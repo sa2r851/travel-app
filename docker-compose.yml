@@ -1,0 +1,8 @@
+version: '3'
+services:
+  dj-app:
+    container_name: secand
+    build: .
+
+    ports:
+      - "8000:8000"
