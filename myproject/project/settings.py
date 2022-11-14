@@ -27,8 +27,17 @@ SECRET_KEY = 'django-insecure-@*r6=!zy3&hq#$kn7s(6%bdenfe@ynb=9_%g+d8wzad%vv9udg
 DEBUG = True
 
 ALLOWED_HOSTS = ['*',
+'.compute-1.amazonaws.com', 
 '192.168.1.X']
+import requests
+EC2_PRIVATE_IP  =   None
+try:
+    EC2_PRIVATE_IP  =   requests.get('http://169.254.169.254/latest/meta-data/local-ipv4', timeout = 0.01).text
+except requests.exceptions.RequestException:
+    pass
 
+if EC2_PRIVATE_IP:
+    ALLOWED_HOSTS.append(EC2_PRIVATE_IP)
 
 # Application definition
 
